@@ -1,0 +1,68 @@
+name: Variables
+
+on: 
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: 'Run environment'
+                required: true
+                default: 'test'
+                type: choice
+                options:
+                - dev
+                - prod
+                - test
+            
+            version:
+                description: 'Application Version'
+                required: true
+                default: "v1.0.0"
+
+env:
+    GLOABL_ENV: "1 Tire App"
+
+
+jobs:
+    job1:
+        runs-on: ubuntu-latest 
+        env:
+            JOB1_ENV : "Something!!"
+        steps:
+            - name: Display Inputs
+              run: |
+                echo "Run Environment: ${{inputs.environment}}"
+                echo "App Version: ${{inputs.version}}"
+
+            - name: Global Environment Variable
+              run: |
+                echo "Environment: $GLOABL_ENV"
+
+            - name: Job1 Env Variable
+              run: |
+                echo "Environment: $JOB1_ENV"
+
+    job2:
+        runs-on: ubuntu-latest
+        env:
+            JOB2_ENV : "Monolithic"
+        steps:
+            - name: Job2 Env Variable
+              run: |
+                echo "Environment: $JOB2_ENV"
+
+    job3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Repo Sect and Variables
+              run: |
+                echo "Github Repo Secret: ${{ secrets.SECRET_KEY_DEVOPS_JUNE_2026 }}"
+                echo "Github Repo Variable: ${{ vars.SOME_VARIABLE_DEVOPS_JUNE_2026 }}"
+
+
+
+    job3:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Repo Sect and Variables
+              run: |
+                npm start
