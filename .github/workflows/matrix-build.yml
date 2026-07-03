@@ -1,0 +1,16 @@
+name: matrix-build
+
+on: workflow_dispatch
+
+jobs:
+    job:
+        runs-on: ${{ matrix.os }}
+        strategy:
+            matrix:
+                version: [16, 18, 20]
+                os: [ubuntu-latest, windows-latest]
+        steps:
+            - name: Install Node
+              uses: actions/setup-node@v6
+              with:
+                node-version: ${{ matrix.version }}
