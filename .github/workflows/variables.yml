@@ -55,8 +55,8 @@ jobs:
         steps:
             - name: Print Repo Sect and Variables
               run: |
-                echo "Github Repo Secret: ${{ secrets.SECRET_KEY_DEVOPS_JUNE_2026 }}"
-                echo "Github Repo Variable: ${{ vars.SOME_VARIABLE_DEVOPS_JUNE_2026 }}"
+                echo "Github Repo Secret: ${{ secrets.DEVOPSKEY_2026 }}"
+                echo "Github Repo Variable: ${{ vars.SOME_DEVOPSKEY_2026 }}"
 
 
 
